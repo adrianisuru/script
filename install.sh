@@ -10,3 +10,9 @@ then
 else
     echo "bios detected"
 fi
+
+if [ ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null ]; then
+   echo "internet detected"
+else
+   echo "no internet"
+fi
