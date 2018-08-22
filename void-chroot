@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Sets up chroot jail, as done on the void wiki (https://wiki.voidlinux.eu/Installation_on_UEFI,_via_chroot)
+mount -t proc proc $1/proc
+mount -t sysfs sys $1/sys
+mount -o bind /dev $1/dev
+mount -t devpts pts $1/dev/pts
+cp -L /etc/resolv.conf $1/etc/
+cd $1
+chroot $1
